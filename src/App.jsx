@@ -1,10 +1,21 @@
-import Logo from './components/Logo';
+import { GoTasklist } from "react-icons/go";
+import Task from "./components/Task";
+
 
 function App() {
   return (
-    <>
-      <Logo />
-    </>
+
+    <div className="container justify-content-center">
+      <div className="">
+        <Task/>
+      </div>
+
+    </div>
+
+
+    
+    
+    
   );
 }
 
