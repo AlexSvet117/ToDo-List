@@ -34,9 +34,8 @@ function Form({addTask}) {
                 value={taskInput}/>
             </div>
             
-
+            <button type="submit" className="btn fs-4 btn-sm"><FaPlus /></button>
         </div>
-        <button type="submit" className="btn fs-4 btn-sm"><FaPlus /></button>
     </form>
   )
 }
