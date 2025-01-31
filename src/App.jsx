@@ -1,5 +1,6 @@
 import { GoTasklist } from "react-icons/go";
 import Task from "./components/Task";
+import TaskList from "./components/TaskList";
 
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
 
     <div className="container justify-content-center">
       <div className="">
-        <Task/>
+        <TaskList/>
+
       </div>
 
     </div>
