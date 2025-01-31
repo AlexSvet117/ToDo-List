@@ -33,9 +33,10 @@ function Form({addTask}) {
                 type="text" className="form-control border-0 bg-bone-white px-3" id="new-task" placeholder="Add New Task ..." 
                 value={taskInput}/>
             </div>
-            <button type="submit" className="btn fs-4 btn-sm"><FaPlus /></button>
+            
 
         </div>
+        <button type="submit" className="btn fs-4 btn-sm"><FaPlus /></button>
     </form>
   )
 }
