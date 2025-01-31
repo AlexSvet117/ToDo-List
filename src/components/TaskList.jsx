@@ -16,7 +16,7 @@ function TaskList() {
     
     <div className="d-flex flex-column gap-1 align-items-center">
         {tasks.map((task)=> (
-          <Task key={tasks.id} task={task}/> 
+          <Task key={task.id} task={task}/> 
         ))}
 
       
