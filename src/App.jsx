@@ -3,6 +3,7 @@ import Task from "./components/Task";
 import TaskList from "./components/TaskList";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
           <Form/>
         </div>
         <TaskList/>
+        <div className="col-5 mx-auto mt-2">
+        <Footer/>
+        </div>
 
       </div>
 

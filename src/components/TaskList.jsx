@@ -13,14 +13,13 @@ function TaskList() {
 
   return (
 
-    
     <div className="d-flex flex-column gap-1 align-items-center">
         {tasks.map((task)=> (
           <Task key={task.id} task={task}/> 
         ))}
-
-      
     </div>
+
+
   )
 }
 
