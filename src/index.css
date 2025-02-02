@@ -11,29 +11,27 @@
   font-weight: bold;
 }
 
-body {
-  height: 200px; /* or any height you need */
-  position: relative; /* This is important to create a stacking context */
+/* body {
+  height: 200px; 
+  position: relative; 
 }
 
 .background-top {
-  background-color: #c3b9b7; /* Example top color */
+  background-color: #c3b9b7; 
   height: 40%;
   width: 100%;
   position: absolute;
   top: 0;
-  /* z-index: 1; */
 }
 
 .background-bottom {
-  background-color: #2691c6; /* Example bottom color */
+  background-color: #2691c6; 
   height: 60%;
   width: 100%;
   position: absolute;
   bottom: 0;
-  /* z-index: 0; */
 }
 
 .split-screen {
   height: 100vh;
-}
+} */

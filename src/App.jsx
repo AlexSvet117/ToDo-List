@@ -1,4 +1,3 @@
-// import { GoTasklist } from "react-icons/go";
 import Task from "./components/Task";
 import TaskList from "./components/TaskList";
 import Form from "./components/Form";
@@ -10,8 +9,8 @@ import React, { useState } from 'react'
 function App() {
 
   const [tasks, setTasks] = useState([])
-
-  const [filter, setFilter] = useState('all'); // Track the selected filter
+  const [filter, setFilter] = useState('all')
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   // funciton to add a task
   const addTask = (newTask) => {
@@ -44,9 +43,19 @@ function App() {
     return true
   })
 
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
 
-    <div className="container justify-content-center">
+    <div className={`container justify-content-center ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <button 
+        className={`btn btn-${isDarkMode ? 'light' : 'dark'} mt-3`} 
+        onClick={toggleDarkMode}>
+        Toggle {isDarkMode ? 'Light' : 'Dark'} Mode
+      </button>
       <div className="">
         <Navbar/>
         <div className="col-5 mx-auto mt-2">
