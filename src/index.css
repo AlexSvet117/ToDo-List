@@ -2,6 +2,11 @@
   background-color: #f4eee8;
 }
 
+.completed {
+  text-decoration: line-through;
+  color: #aeb2b4;
+}
+
 body {
   height: 200px; /* or any height you need */
   position: relative; /* This is important to create a stacking context */

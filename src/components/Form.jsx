@@ -10,14 +10,20 @@ function Form({addTask}) {
     setTaskInput(e.target.value)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
+
+    // Prevent adding empty tasks
+    if (taskInput.trim() === '') {
+        return; // Don't submit if the input is empty
+      }
+
   const newTask = {
     id: Date.now(),
-    taskInput: taskInput,
+    taskName: taskInput,
     completed: false
   }
+
   addTask(newTask)
 
   setTaskInput('')
@@ -30,7 +36,7 @@ function Form({addTask}) {
             <div className="d-flex">
                 <div className="text-dark mb-1 fs-4"><FaRegCircle/></div>
                 <input onChange={handleTaskInput}
-                type="text" className="form-control border-0 bg-bone-white px-3" id="new-task" placeholder="Add New Task ..." 
+                type="text" className="form-control border-0 bg-bone-white px-3 col-auto" id="new-task" placeholder="Add New Task ..." 
                 value={taskInput}/>
             </div>
             
