@@ -1,15 +1,25 @@
 import React from 'react'
 
-function Footer() {
+function Footer({clearCompleted, tasks, setFilter, currentFilter}) {
+
+    const tasksLeft = tasks.filter(task => !task.completed).length
+
+    const handleFilterChange = (filter) => {
+        setFilter(filter);
+      };
+
   return (
-    <div className='footer card d-flex flex-row justify-content-between p-2 bg-bone-white'>
-        <div># tasks left</div>
+    <div className='footer card d-flex flex-row justify-content-between p-1 bg-bone-white'>
+        <div className="p-2">{tasksLeft} Tasks left</div>
         <div className='d-flex flex-row'>
-            <div className='mx-1'>all</div>
-            <div className='mx-1'>active</div>
-            <div className='mx-1'>completed</div>
+            <button className={`mx-1 btn btn-sm fs-6 ${currentFilter === 'all' ? 'font-weight-bold' : ''}`}
+          onClick={() => handleFilterChange('all')}>All</button>
+            <button className={`mx-1 btn btn-sm fs-6 ${currentFilter === 'active' ? 'font-weight-bold' : ''}`}
+          onClick={() => handleFilterChange('active')}>Active</button>
+            <button className={`mx-1 btn btn-sm fs-6 ${currentFilter === 'completed' ? 'font-weight-bold' : ''}`}
+          onClick={() => handleFilterChange('completed')}>Completed</button>
         </div>
-        <div>Clear Completed</div>
+        <button onClick={clearCompleted} className="btn btn-sm fs-6">Clear Completed</button>
       
     </div>
   )

@@ -9,26 +9,40 @@ import React, { useState } from 'react'
 
 function App() {
 
-  const [tasks, setTasks] = useState([
-    // {id: 1, taskName: "Do the Dishes", completed: false},
-    // {id: 2, taskName: "Render your ass", completed: false},
-    // {id: 3, taskName: "Go for a walk", completed: false},
-])
+  const [tasks, setTasks] = useState([])
 
+  const [filter, setFilter] = useState('all'); // Track the selected filter
+
+  // funciton to add a task
   const addTask = (newTask) => {
     setTasks((prev) => [...prev,newTask])
   }
 
+  // function to remove selected task
   const removeTask = (id) => {
     setTasks((prev) => prev.filter((task) => task.id !==id))
   }
 
+  // function to check tasks as completed
   const toggleComplete = (id) => {
     setTasks((prev) => prev.map(task => 
         task.id === id ? { ...task, completed : !task.completed } : task
       )
     )
   }
+
+  // Function to remove all completed tasks
+  const clearCompleted = () => {
+    setTasks((prev) => prev.filter(task => !task.completed));
+  }
+
+  // Filter tasks based on the selected filter
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'all') return true
+    if (filter === 'active') return !task.completed
+    if (filter === 'completed') return task.completed
+    return true
+  })
 
   return (
 
@@ -38,9 +52,14 @@ function App() {
         <div className="col-5 mx-auto mt-2">
           <Form addTask={addTask}/>
         </div>
-        <TaskList tasks={tasks} removeTask={removeTask} toggleComplete={toggleComplete}/>
+        <TaskList tasks={filteredTasks} removeTask={removeTask} toggleComplete={toggleComplete}/>
         <div className="col-5 mx-auto mt-2">
-        <Footer/>
+        <Footer 
+        clearCompleted={clearCompleted} 
+        tasks={tasks} 
+        setFilter={setFilter} 
+        currentFilter={filter}
+        />
         </div>
       </div>
     </div>

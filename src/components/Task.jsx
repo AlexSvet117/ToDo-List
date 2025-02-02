@@ -9,8 +9,8 @@ function Task({task,removeTask, toggleComplete}) {
         <div className="card bg-bone-white text-dark">
             <div className="card-body d-flex justify-content-between">
                 <div className="text-dark d-flex">
-                   <div className="text-dark px-0 fs-4"onClick={() => toggleComplete(task.id)}>
-                   {task.completed ? <FaRegCircleCheck /> : <FaRegCircle />}</div>
+                   <button className="btn btn-sm text-dark px-0 fs-4"onClick={() => toggleComplete(task.id)}>
+                   {task.completed ? <FaRegCircleCheck /> : <FaRegCircle />}</button>
                    <p className={`card-title px-3 my-2 ${task.completed ? 'completed' : ''}`}>
                    {task.taskName}</p>
                 </div>

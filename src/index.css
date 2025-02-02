@@ -7,6 +7,10 @@
   color: #aeb2b4;
 }
 
+.font-weight-bold {
+  font-weight: bold;
+}
+
 body {
   height: 200px; /* or any height you need */
   position: relative; /* This is important to create a stacking context */
