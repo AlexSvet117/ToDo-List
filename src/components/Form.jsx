@@ -31,16 +31,16 @@ function Form({addTask}) {
 
   return (
     <form onSubmit={handleSubmit}
-    className="border border-1 p-2 px-3 mb-1 bg-bone-white">
+    className="border border-1 p-2 px-3 mb-1 bg-bone-white shadow-sm">
         <div className="form-floating d-flex flex-row justify-content-between">
             <div className="d-flex">
-                <div className="text-dark mb-1 fs-4"><FaRegCircle/></div>
+                <div className="mb-1 fs-4 icon-color"><FaRegCircle/></div>
                 <input onChange={handleTaskInput}
                 type="text" className="form-control border-0 bg-bone-white px-3 col-auto" id="new-task" placeholder="Add New Task ..." 
                 value={taskInput}/>
             </div>
             
-            <button type="submit" className="btn fs-4 btn-sm"><FaPlus /></button>
+            <button type="submit" className="btn fs-4 btn-sm icon-color"><FaPlus /></button>
         </div>
     </form>
   )

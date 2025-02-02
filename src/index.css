@@ -1,5 +1,5 @@
 .bg-bone-white {
-  background-color: #f4eee8;
+  background-color: #f9f9f9;
 }
 
 .completed {
@@ -11,73 +11,32 @@
   font-weight: bold;
 }
 
-/* Light mode styles (default) */
-.light-mode {
-  background-color: #f8f9fa;  /* Light background for the page */
-  color: #000;                 /* Dark text color */
+.text-color {
+  color: #356b67;
 }
 
-/* Dark mode styles */
-.dark-mode {
-  background-color: #121212;  /* Dark background for the page */
-  color: #fff;                 /* Light text color */
+.icon-color {
+  color: #c3c3c3;
 }
 
-/* Dark mode styles for specific elements */
-body.dark-mode {
-  background-color: #121212;  /* Dark background for the body */
-}
 
-footer.dark-mode {
-  background-color: #23272b;  /* Dark footer background */
-}
 
-.card.dark-mode {
-  background-color: #2e343b;  /* Dark card background */
-}
-
-/* Light and dark mode button styles */
-.btn-dark {
-  background-color: #f8f9fa;  /* Light button in dark mode */
-  color: #343a40;              /* Dark text for the button */
-}
-
-.btn-light {
-  background-color: #343a40;  /* Dark button in light mode */
-  color: #f8f9fa;              /* Light text for the button */
-}
-
-/* Optionally style the Navbar for dark mode */
-.navbar.dark-mode {
-  background-color: #23272b;  /* Dark navbar background */
-}
-
-/* Optionally style the Form for dark mode */
-.form-control.dark-mode {
-  background-color: #333;  /* Dark form background */
-  color: #fff;             /* Light text color */
-}
-
-/* Make card body content easier to see in dark mode */
-.card-body.dark-mode {
-  color: #fff;              /* Light text color inside cards */
-}
-
-/* body {
+body {
   height: 200px; 
   position: relative; 
 }
 
 .background-top {
-  background-color: #c3b9b7; 
+  background-color: #c49e96; 
   height: 40%;
   width: 100%;
   position: absolute;
   top: 0;
+  z-index: 1;
 }
 
 .background-bottom {
-  background-color: #2691c6; 
+  background-color: #688999; 
   height: 60%;
   width: 100%;
   position: absolute;
@@ -86,4 +45,4 @@ footer.dark-mode {
 
 .split-screen {
   height: 100vh;
-} */
+}

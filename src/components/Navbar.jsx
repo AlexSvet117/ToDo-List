@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav className="navbar">
         <div className="container">
-            <div className="navbar-brand fs-1 fw-bold mx-auto">Todo List</div>
+            <div className="navbar fs-1 fw-bold mx-auto text-color">Todo List</div>
         </div>
 
     </nav>

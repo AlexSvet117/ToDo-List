@@ -4,6 +4,9 @@ import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import React, { useState } from 'react'
+import { FaRegSun } from "react-icons/fa";
+import { IoMoon } from "react-icons/io5";
+
 
 
 function App() {
@@ -43,18 +46,18 @@ function App() {
     return true
   })
 
-  // Toggle dark mode
+  // s dark mode
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
   return (
 
-    <div className={`container justify-content-center${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+    <div className={`container justify-content-center ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <button 
-        className={`btn btn-${isDarkMode ? 'light' : 'dark'} mt-3`} 
+        className={`btn btn-${isDarkMode ? 'light' : 'dark'} mt-3 icon-color`} 
         onClick={toggleDarkMode}>
-        Toggle {isDarkMode ? 'Light' : 'Dark'} Mode
+        {isDarkMode ? <FaRegSun /> : <IoMoon />}
       </button>
       <div className="">
         <Navbar/>

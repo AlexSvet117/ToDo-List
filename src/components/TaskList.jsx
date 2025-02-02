@@ -6,7 +6,7 @@ function TaskList({tasks, removeTask, toggleComplete}) {
 
   return (
     
-    tasks.length < 1 ? (<div className='bg-bone-white text-center mt-2 p-2 mx-auto col-5'>No Tasks Added</div>) : 
+    tasks.length < 1 ? (<div className='bg-bone-white text-center mt-2 p-2 mx-auto col-5 border-bottom text-color'>No Tasks Added</div>) : 
 
     (<div className="d-flex flex-column align-items-center">
         {tasks.map((task)=> (
