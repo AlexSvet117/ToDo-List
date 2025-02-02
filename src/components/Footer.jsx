@@ -9,8 +9,8 @@ function Footer({clearCompleted, tasks, setFilter, currentFilter}) {
       };
 
   return (
-    <div className='footer card d-flex flex-row justify-content-between p-1 bg-bone-white'>
-        <div className="p-2">{tasksLeft} Tasks left</div>
+    <div className='footer d-flex flex-row justify-content-between p-1 bg-bone-white'>
+        <div className="p-1">{tasksLeft} Tasks left</div>
         <div className='d-flex'>
             <button className={` btn btn-sm fs-6 ${currentFilter === 'all' ? 'font-weight-bold' : ''}`}
           onClick={() => handleFilterChange('all')}>All</button>

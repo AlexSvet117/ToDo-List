@@ -50,7 +50,7 @@ function App() {
 
   return (
 
-    <div className={`container justify-content-center ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+    <div className={`container justify-content-center${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <button 
         className={`btn btn-${isDarkMode ? 'light' : 'dark'} mt-3`} 
         onClick={toggleDarkMode}>
@@ -62,7 +62,7 @@ function App() {
           <Form addTask={addTask}/>
         </div>
         <TaskList tasks={filteredTasks} removeTask={removeTask} toggleComplete={toggleComplete}/>
-        <div className="col-5 mx-auto mt-2">
+        <div className="col-5 mx-auto">
         <Footer 
         clearCompleted={clearCompleted} 
         tasks={tasks} 

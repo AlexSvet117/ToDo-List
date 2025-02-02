@@ -5,7 +5,7 @@ import { FaRegCircle } from "react-icons/fa6";
 
 function Task({task,removeTask, toggleComplete}) {
   return (
-    <div className="col-5">
+    <div className="col-5 border-bottom rounded-2">
         <div className="bg-bone-white text-dark">
             <div className="px-3 d-flex justify-content-between">
                 <div className="text-dark d-flex">
