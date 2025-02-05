@@ -52,8 +52,8 @@ function App() {
   };
 
   return (
-
-    <div className={`container justify-content-center ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+    <div className={`split-screen ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+    <div className="container justify-content-center">
       <button 
         className={`btn btn-${isDarkMode ? 'light' : 'dark'} mt-3 icon-color`} 
         onClick={toggleDarkMode}>
@@ -74,6 +74,7 @@ function App() {
         />
         </div>
       </div>
+    </div>
     </div>
   );
 }

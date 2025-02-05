@@ -9,7 +9,7 @@ function Footer({clearCompleted, tasks, setFilter, currentFilter}) {
       };
 
   return (
-    <div className='footer d-flex flex-row justify-content-between p-1 bg-bone-white shadow-sm'>
+    <div className='footer d-flex justify-content-between p-1 bg-bone-white shadow-sm'>
         <div className="p-2 text-color">{tasksLeft} Tasks left</div>
         <div className='d-flex'>
             <button className={` btn btn-sm fs-6 text-color ${currentFilter === 'all' ? 'font-weight-bold' : ''}`}

@@ -21,79 +21,35 @@
 
 /* Light mode styles (default) */
 .light-mode {
-  background-color: #bcbcbc;  /* Light background for the page */
-  color: #000;                 /* Dark text color */
+  color: #000;
+  --theme-top-bg-color: #b9b8b8;
+  --theme-bottom-bg-color: #e0e0e0;               
 }
 
 /* Dark mode styles */
 .dark-mode {
-  background-color: #121212;  /* Dark background for the page */
-  color: #bcbcbc;                 /* Light text color */
-}
-
-/* Dark mode styles for specific elements */
-body.dark-mode {
-  background-color: #121212;  /* Dark background for the body */
-}
-
-footer.dark-mode {
-  background-color: #23272b;  /* Dark footer background */
-}
-
-.card.dark-mode {
-  background-color: #2e343b;  /* Dark card background */
+  color: #bcbcbc;    
+  --theme-top-bg-color: #1c1c1c;
+  --theme-bottom-bg-color: #6e6d6d;            
 }
 
 /* Light and dark mode button styles */
 .btn-dark {
-  background-color: #f8f9fa;  /* Light button in dark mode */
-  color: #343a40;              /* Dark text for the button */
+  background-color: #f8f9fa; 
+  color: #343a40;              
 }
 
 .btn-light {
-  background-color: #343a40;  /* Dark button in light mode */
-  color: #f8f9fa;              /* Light text for the button */
+  background-color: #343a40; 
+  color: #f8f9fa;              
 }
 
-/* Optionally style the Navbar for dark mode */
-.navbar.dark-mode {
-  background-color: #23272b;  /* Dark navbar background */
-}
-
-/* Optionally style the Form for dark mode */
-.form-control.dark-mode {
-  background-color: #333;  /* Dark form background */
-  color: #fff;             /* Light text color */
-}
-
-/* Make card body content easier to see in dark mode */
-.card-body.dark-mode {
-  color: #fff;              /* Light text color inside cards */
-}
-
-
-body {
-  height: 200px; 
-  position: relative; 
-}
-
-.background-top {
-  background-color: #c49e96; 
-  height: 40%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-}
-
-.background-bottom {
-  background-color: #688999; 
-  height: 60%;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-
+/* split screen colors */
 .split-screen {
-  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    var(--theme-top-bg-color) 40%,
+    var(--theme-bottom-bg-color) 40%
+  );
 }
