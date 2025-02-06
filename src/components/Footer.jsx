@@ -8,6 +8,7 @@ function Footer({clearCompleted, tasks, setFilter, currentFilter}) {
         setFilter(filter);
       };
 
+      
   return (
     <div className='footer d-flex justify-content-between p-1 bg-bone-white shadow-sm'>
         <div className="p-2 text-color">{tasksLeft} Tasks left</div>
