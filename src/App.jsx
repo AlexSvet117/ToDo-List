@@ -3,7 +3,7 @@ import TaskList from "./components/TaskList";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaRegSun } from "react-icons/fa";
 import { IoMoon } from "react-icons/io5";
 
@@ -14,6 +14,25 @@ function App() {
   const [tasks, setTasks] = useState([])
   const [filter, setFilter] = useState('all')
   const [isDarkMode, setIsDarkMode] = useState(false)
+
+  const USER_ID = 1
+
+  // get data from api and render on screen
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch('/todos?user_id=' + USER_ID)
+      const data = await response.json()
+      console.log(data)
+      setTasks(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchTasks()
+  }, [])
+
 
   // funciton to add a task
   const addTask = (newTask) => {
