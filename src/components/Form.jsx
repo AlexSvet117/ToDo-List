@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 function Form({addTask}) {
 
   const [taskInput, setTaskInput] = useState('')
+  const USER_ID = 23
 
   const handleTaskInput = (e) => {
     setTaskInput(e.target.value)
@@ -18,10 +19,18 @@ function Form({addTask}) {
         return; // Don't submit if the input is empty
       }
 
+      `
+    "completed": false,
+    "created_at": "Tue, 04 Feb 2025 03:07:16 GMT",
+    "id": 15,
+    "title": "Buy groceries"
+      `
+
   const newTask = {
-    id: Date.now(),
-    taskName: taskInput,
-    completed: false
+    id: USER_ID,
+    title: taskInput,
+    completed: false,
+    created_at: Date().toString()
   }
 
   addTask(newTask)

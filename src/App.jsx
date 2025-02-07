@@ -15,7 +15,7 @@ function App() {
   const [filter, setFilter] = useState('all')
   const [isDarkMode, setIsDarkMode] = useState(false)
 
-  const USER_ID = 1
+  const USER_ID = 23
 
   // get data from api and render on screen
   const fetchTasks = async () => {
@@ -36,7 +36,7 @@ function App() {
 
   // funciton to add a task
   const addTask = (newTask) => {
-    setTasks((prev) => [...prev,newTask])
+    setTasks((prev) => [...prev, newTask])
   }
 
   // function to remove selected task
