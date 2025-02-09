@@ -28,10 +28,14 @@ function App() {
     } catch (err) {
       console.log(err)
     }
-    useEffect(() => {
-      fetchTasks()
-    }, [])
-  }  
+
+  }
+  useEffect(() => {
+    fetchTasks()
+  }, [])
+
+  
+ 
 
   const toggleComplete = async (id) => {
     setTasks((prev) =>
@@ -47,7 +51,7 @@ function App() {
       const response = await fetch(`/api/todos/${id}?user_id=${USER_ID}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ completed: updatedStatus }),
+        body: JSON.stringify({ "title": "Updated title", "completed": true }),
       });
   
       if (!response.ok) {
@@ -58,11 +62,12 @@ function App() {
     } catch (err) {
       console.log('Error updating task:', err)
   
-      setTasks((prev) =>
-        prev.map((task) =>
-          task.id === id ? { ...task, completed: !updatedStatus } : task
-        )
-      );
+      // setTasks((prev) =>
+      //   prev.map((task) =>
+      //     task.id === id ? { ...task, completed: !updatedStatus } : task
+      //   )
+      // );
+      setTasks(Array.isArray(data) ? data : [])
     }
   };
 
@@ -71,7 +76,7 @@ function App() {
   
     if (completedTasks.length === 0) {
       console.log("No tasks to delete.");
-      return;
+      return setTasks(Array.isArray(data) ? data : []);
     }
   
     try {
@@ -90,7 +95,8 @@ function App() {
   
       fetchTasks(); 
       console.log('Completed tasks deleted successfully')
-      setTasks((prev) => prev.filter(task => !task.completed))
+      // setTasks((prev) => prev.filter(task => !task.completed))
+      setTasks(Array.isArray(data) ? data : [])
       
     } catch (err) {
       console.error('Error deleting tasks:', err);
