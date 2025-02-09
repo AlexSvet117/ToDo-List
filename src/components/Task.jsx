@@ -3,7 +3,25 @@ import { FaTrash } from "react-icons/fa6"
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegCircle } from "react-icons/fa6";
 
-function Task({task,removeTask, toggleComplete}) {
+function Task({task, fetchTasks, toggleComplete}) {
+
+  const USER_ID = 23
+
+  const handleDelete = async () => {
+    try{
+      const response = await fetch(`/api/todos/${task.id}?user_id=${USER_ID}`, {
+        method: 'DELETE'
+      })
+      if(!response.ok) {
+        throw new Error (`Error deleting the task: ${task}`)
+      }
+      fetchTasks()
+    }catch (err) {
+      console.log(err)
+
+    }
+  }
+
   return (
     <div className="col-5 border-bottom rounded-2 shadow-sm">
         <div className="bg-bone-white text-dark">
@@ -12,11 +30,10 @@ function Task({task,removeTask, toggleComplete}) {
                    <button className="btn btn-sm px-0 fs-4 icon-color"onClick={() => toggleComplete(task.id)}>
                    {task.completed ? <FaRegCircleCheck /> : <FaRegCircle />}</button>
                    <p className={`card-title px-3 my-3 fs-5 text-color ${task.completed ? 'completed' : ''}`}>
-                   {task.taskName}</p>
+                   {task.title}</p>
                 </div>
-                <button onClick={() => removeTask(task.id)} className="btn btn-sm fs-5 icon-color"><FaTrash/></button>
+                <button onClick={() => handleDelete(task.id)} className="btn btn-sm fs-5 icon-color"><FaTrash/></button>
             </div>
-            
         </div>
     </div>
   )

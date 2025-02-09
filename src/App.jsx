@@ -15,47 +15,87 @@ function App() {
   const [filter, setFilter] = useState('all')
   const [isDarkMode, setIsDarkMode] = useState(false)
 
+  // const USER_ID = import.meta.env.VITE_USER_ID
   const USER_ID = 23
 
   // get data from api and render on screen
   const fetchTasks = async () => {
     try {
-      const response = await fetch('/todos?user_id=' + USER_ID)
+      const response = await fetch('/api/todos?user_id=' + USER_ID)
       const data = await response.json()
       console.log(data)
       setTasks(data)
     } catch (err) {
       console.log(err)
     }
-  }
+    useEffect(() => {
+      fetchTasks()
+    }, [])
+  }  
 
-  useEffect(() => {
-    fetchTasks()
-  }, [])
-
-
-  // funciton to add a task
-  const addTask = (newTask) => {
-    setTasks((prev) => [...prev, newTask])
-  }
-
-  // function to remove selected task
-  const removeTask = (id) => {
-    setTasks((prev) => prev.filter((task) => task.id !==id))
-  }
-
-  // function to check tasks as completed
-  const toggleComplete = (id) => {
-    setTasks((prev) => prev.map(task => 
-        task.id === id ? { ...task, completed : !task.completed } : task
+  const toggleComplete = async (id) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
       )
-    )
-  }
+    );
+  
+    const updatedTask = tasks.find((task) => task.id === id);
+    const updatedStatus = !updatedTask.completed;
+  
+    try {
+      const response = await fetch(`/api/todos/${id}?user_id=${USER_ID}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed: updatedStatus }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error updating the task with ID: ${id}`)
+      }
+  
+      fetchTasks()
+    } catch (err) {
+      console.log('Error updating task:', err)
+  
+      setTasks((prev) =>
+        prev.map((task) =>
+          task.id === id ? { ...task, completed: !updatedStatus } : task
+        )
+      );
+    }
+  };
 
-  // Function to remove all completed tasks
-  const clearCompleted = () => {
-    setTasks((prev) => prev.filter(task => !task.completed));
-  }
+  const clearCompleted = async () => {
+    const completedTasks = tasks.filter(task => task.completed)
+  
+    if (completedTasks.length === 0) {
+      console.log("No tasks to delete.");
+      return;
+    }
+  
+    try {
+      // Loop through each completed task and delete it
+      await Promise.all(
+        completedTasks.map(async (task) => {
+          const response = await fetch(`/api/todos/${task.id}?user_id=${USER_ID}`, {
+            method: 'DELETE',
+          });
+  
+          if (!response.ok) {
+            throw new Error(`Error deleting the task with ID: ${task.id}`)
+          }
+        })
+      );
+  
+      fetchTasks(); 
+      console.log('Completed tasks deleted successfully')
+      setTasks((prev) => prev.filter(task => !task.completed))
+      
+    } catch (err) {
+      console.error('Error deleting tasks:', err);
+    }
+  };
 
   // Filter tasks based on the selected filter
   const filteredTasks = tasks.filter(task => {
@@ -81,9 +121,9 @@ function App() {
       <div className="">
         <Navbar/>
         <div className="col-5 mx-auto mt-2">
-          <Form addTask={addTask}/>
+          <Form fetchTasks={fetchTasks}/>
         </div>
-        <TaskList tasks={filteredTasks} removeTask={removeTask} toggleComplete={toggleComplete}/>
+        <TaskList tasks={filteredTasks} fetchTasks={fetchTasks} toggleComplete={toggleComplete}/>
         <div className="col-5 mx-auto">
         <Footer 
         clearCompleted={clearCompleted} 

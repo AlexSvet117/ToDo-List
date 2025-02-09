@@ -1,7 +1,7 @@
 import TaskCard from './Task'
 import Task from './Task'
 
-function TaskList({tasks, removeTask, toggleComplete}) {
+function TaskList({tasks, fetchTasks, toggleComplete}) {
 
 
   return (
@@ -10,7 +10,7 @@ function TaskList({tasks, removeTask, toggleComplete}) {
 
     (<div className="d-flex flex-column align-items-center">
         {tasks.map((task)=> (
-          <Task key={task.id} task={task} removeTask={removeTask} toggleComplete={toggleComplete}/> 
+          <Task key={task.id} task={task} fetchTasks={fetchTasks} toggleComplete={toggleComplete}/> 
         ))}
     </div>)
 

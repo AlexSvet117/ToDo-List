@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import { FaRegCircle } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 
-function Form({addTask}) {
+function Form({fetchTasks}) {
 
   const [taskInput, setTaskInput] = useState('')
   const USER_ID = 23
+  
 
   const handleTaskInput = (e) => {
     setTaskInput(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Prevent adding empty tasks
@@ -19,21 +20,28 @@ function Form({addTask}) {
         return; // Don't submit if the input is empty
       }
 
-      `
-    "completed": false,
-    "created_at": "Tue, 04 Feb 2025 03:07:16 GMT",
-    "id": 15,
-    "title": "Buy groceries"
-      `
-
   const newTask = {
-    id: USER_ID,
+    id: Date(),
     title: taskInput,
     completed: false,
-    created_at: Date().toString()
+    user_id: USER_ID,
+    created_at: Date()
   }
 
-  addTask(newTask)
+  try {
+    const options = {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify(newTask)
+    }
+    const response = await fetch('/api/todos', options)
+    if (!response.ok) {
+      throw new Error('Error: ' + response.status)
+    }
+    fetchTasks();
+  }catch(e) {
+    console.log(e)
+  }
 
   setTaskInput('')
   }
