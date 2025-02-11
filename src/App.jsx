@@ -24,7 +24,7 @@ function App() {
       const response = await fetch('/api/todos?user_id=' + USER_ID)
       const data = await response.json()
       console.log(data)
-      setTasks(data)
+      setTasks(Array.isArray(data) ? data : [])
     } catch (err) {
       console.log(err)
     }
@@ -51,22 +51,15 @@ function App() {
       const response = await fetch(`/api/todos/${id}?user_id=${USER_ID}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ "title": "Updated title", "completed": true }),
+        body: JSON.stringify({ "title": updatedTask.title, "completed": updatedStatus }),
       });
   
       if (!response.ok) {
         throw new Error(`Error updating the task with ID: ${id}`)
       }
-  
-      fetchTasks()
+
     } catch (err) {
       console.log('Error updating task:', err)
-  
-      // setTasks((prev) =>
-      //   prev.map((task) =>
-      //     task.id === id ? { ...task, completed: !updatedStatus } : task
-      //   )
-      // );
       setTasks(Array.isArray(data) ? data : [])
     }
   };
@@ -95,8 +88,6 @@ function App() {
   
       fetchTasks(); 
       console.log('Completed tasks deleted successfully')
-      // setTasks((prev) => prev.filter(task => !task.completed))
-      setTasks(Array.isArray(data) ? data : [])
       
     } catch (err) {
       console.error('Error deleting tasks:', err);
